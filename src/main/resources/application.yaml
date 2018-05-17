@@ -1,0 +1,20 @@
+spring:
+  output:
+    ansi:
+      enabled: never
+  application:
+    name: ONS ReDMaT-Poc
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/ORCLCDB
+    username: C##LEDRRDM
+    password: ledrrdm
+    driverClassName: oracle.jdbc.OracleDriver
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    show-sql: true
+
+
+server:
+  port: 8125
+  servlet-path: /
+

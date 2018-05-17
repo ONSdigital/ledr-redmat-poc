@@ -1,0 +1,1 @@
+log by filename curl -v -H "Content-Type: application/json" http://localhost:8125/log/aa
