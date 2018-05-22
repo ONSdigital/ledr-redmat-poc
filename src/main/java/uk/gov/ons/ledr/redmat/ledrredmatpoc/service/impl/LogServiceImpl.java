@@ -7,6 +7,7 @@ import uk.gov.ons.ledr.redmat.ledrredmatpoc.domain.model.Log;
 import uk.gov.ons.ledr.redmat.ledrredmatpoc.domain.repository.LogRepository;
 import uk.gov.ons.ledr.redmat.ledrredmatpoc.service.LogService;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -25,28 +26,19 @@ public class LogServiceImpl implements LogService {
 
   }
 
-  public Log getLogBySchemaId(String schemaId) {
-    log.info(schemaId);
-
-    Log loadLog = logRepository.findBySchemaId(schemaId);
-
-    return loadLog;
-  }
-
-  public Log getLogById(Integer id) {
-    log.info(id + "");
-
-    Optional<Log> loadLog = logRepository.findById(id);
-
-    return loadLog.get();
-  }
-
   public Log getLogByFileId(Integer id) {
     log.info(id + "");
 
     Log loadLog = logRepository.findByFileId(id);
 
     return loadLog;
+  }
+
+  public List<Log> getAllLogs() {
+
+    List<Log> loadLogs = logRepository.findAll();
+
+    return loadLogs;
   }
 
 
