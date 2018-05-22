@@ -25,3 +25,15 @@ In order to run these applications you need to perform the following steps:
 
 6. run
         ./scripts/pySetup.sh
+
+
+To run the java app:
+
+	mvn clean install
+
+	mvn spring-boot:run
+
+
+To run the python UI (from ledr-redmat-ui-poc):
+
+	python main.py
