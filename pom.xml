@@ -66,6 +66,18 @@
 
 
     </dependencies>
+<distributionManagement>
+      
+        <repository>
+          <snapshots/>
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://art-p-01/artifactory/libs-snapshot</url>
+        </repository>
+
+</distributionManagement>
+
+
 
 	<build>
 		<plugins>
