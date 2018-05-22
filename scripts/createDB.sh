@@ -26,3 +26,5 @@ docker exec database ./setPassword.sh ledr
 
 docker exec database sqlplus sys/ledr@//localhost:1521/ORCLCDB as sysdba @/userSetUp.sql
 
+cd ../
+
