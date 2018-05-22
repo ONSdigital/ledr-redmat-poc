@@ -76,15 +76,4 @@
 		</plugins>
 	</build>
 	
-	<repositories>
-        <repository>
-          <snapshots>
-            <enabled>false</enabled>
-             </snapshots>
-          <id>central3</id>
-          <name>ext-releases-local</name>
-          <url>http://art-p-01/artifactory/ext-releases-local</url>
-        </repository>
-
-	 </repositories>
 </project>
