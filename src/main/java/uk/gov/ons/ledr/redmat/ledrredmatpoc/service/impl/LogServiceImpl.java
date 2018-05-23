@@ -17,15 +17,24 @@ public class LogServiceImpl implements LogService {
   @Autowired
   private LogRepository logRepository;
 
+  /**
+   * Get all load logs for specific file
+   * @param fileName the file name to search for
+   * @return List<Log> list of all load logs with matching file name
+   */
+  public List<Log> getLogsByFileName(String fileName) {
 
-  public Log getLogByFileName(String fileName) {
+    List<Log> loadLogs = logRepository.findByFileName(fileName);
 
-    Log loadLog = logRepository.findByFileName(fileName);
-
-    return loadLog;
+    return loadLogs;
 
   }
 
+  /**
+   * Get single log
+   * @param id
+   * @return
+   */
   public Log getLogByFileId(Integer id) {
     log.info(id + "");
 
@@ -34,6 +43,10 @@ public class LogServiceImpl implements LogService {
     return loadLog;
   }
 
+  /**
+   * Get a list of all load logs in the database
+   * @return List<Log> list of all load logs
+   */
   public List<Log> getAllLogs() {
 
     List<Log> loadLogs = logRepository.findAll();

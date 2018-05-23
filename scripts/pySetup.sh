@@ -15,3 +15,5 @@ virtualenv --python=python3 redmat
 source redmat/bin/activate
 
 pip install flask
+
+pip install gunicorn

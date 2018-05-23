@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface LogService {
 
-  Log getLogByFileName(String fileName);
+  List<Log> getLogsByFileName(String fileName);
 
   Log getLogByFileId(Integer fileId);
 
