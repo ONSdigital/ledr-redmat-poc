@@ -1,1 +1,1 @@
-log by filename curl -v -H "Content-Type: application/json" http://localhost:8125/log/aa
+log by filename curl -v -H "Content-Type: application/json" http://localhost:8125/log/NSPL_FEB_2018_UK.csv?order=true

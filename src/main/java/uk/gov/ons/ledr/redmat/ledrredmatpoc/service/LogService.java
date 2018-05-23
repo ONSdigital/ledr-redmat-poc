@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface LogService {
 
-  List<Log> getLogsByFileName(String fileName);
+  List<Log> getLogsByFileName(String fileName, boolean order);
 
-  Log getLogByFileId(Integer fileId);
+  List<Log> getLogByFileId(int fileId, boolean order);
 
-  List<Log> getAllLogs();
+  List<Log> getAllLogs(boolean order);
+
 }

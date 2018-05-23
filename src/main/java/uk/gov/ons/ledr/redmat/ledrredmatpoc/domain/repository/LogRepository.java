@@ -13,6 +13,6 @@ public interface LogRepository extends JpaRepository<Log, Integer> {
 
   Log findBySchemaId(String schemaId);
 
-  Log findByFileId(Integer fileId);
+  List<Log> findByFileId(Integer fileId);
 
 }

@@ -13,8 +13,7 @@ spring:
     database-platform: org.hibernate.dialect.Oracle12cDialect
     show-sql: true
 
-
 server:
-  port: 8125
+  port: 8126
   servlet-path: /
 

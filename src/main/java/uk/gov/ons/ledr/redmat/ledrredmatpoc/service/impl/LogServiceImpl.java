@@ -7,6 +7,8 @@ import uk.gov.ons.ledr.redmat.ledrredmatpoc.domain.model.Log;
 import uk.gov.ons.ledr.redmat.ledrredmatpoc.domain.repository.LogRepository;
 import uk.gov.ons.ledr.redmat.ledrredmatpoc.service.LogService;
 
+import javax.persistence.EntityManager;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,14 +19,23 @@ public class LogServiceImpl implements LogService {
   @Autowired
   private LogRepository logRepository;
 
+  @Autowired
+  private EntityManager entityManager;
+
   /**
    * Get all load logs for specific file
    * @param fileName the file name to search for
    * @return List<Log> list of all load logs with matching file name
    */
-  public List<Log> getLogsByFileName(String fileName) {
-
+  public List<Log> getLogsByFileName(String fileName, boolean order) {
+    log.info("HI" +order);
     List<Log> loadLogs = logRepository.findByFileName(fileName);
+
+    if(order) {
+      log.info("IN THE IF");
+      loadLogs = sortLogsByEffectiveFrom(loadLogs);
+    }
+
 
     return loadLogs;
 
@@ -32,27 +43,56 @@ public class LogServiceImpl implements LogService {
 
   /**
    * Get single log
-   * @param id
+   * @param fileId
    * @return
    */
-  public Log getLogByFileId(Integer id) {
-    log.info(id + "");
+  public List<Log> getLogByFileId(int fileId, boolean order) {
+    log.info(fileId + "");
 
-    Log loadLog = logRepository.findByFileId(id);
+    entityManager.clear();
 
-    return loadLog;
+    List<Log> loadLogs = logRepository.findByFileId(fileId);
+
+    if(order) {
+      loadLogs = sortLogsByEffectiveFrom(loadLogs);
+    }
+
+    return loadLogs;
   }
 
   /**
    * Get a list of all load logs in the database
    * @return List<Log> list of all load logs
    */
-  public List<Log> getAllLogs() {
+  public List<Log> getAllLogs(boolean order) {
+
+    entityManager.clear();
 
     List<Log> loadLogs = logRepository.findAll();
+
+    if(order) {
+      loadLogs = sortLogsByEffectiveFrom(loadLogs);
+    }
 
     return loadLogs;
   }
 
 
+  private List<Log> sortLogsByEffectiveFrom(List<Log> logs) {
+    log.info("MADE IT HERE");
+    logs.forEach(System.out::println);
+    logs.sort(new Comparator<Log>() {
+      @Override
+      public int compare(Log log1, Log log2) {
+        if(log1.getEffectiveFrom().compareTo(log2.getEffectiveFrom()) == 0){
+          return 0;
+        }
+        return log1.getEffectiveFrom().compareTo(log2.getEffectiveFrom()) > 0  ? -1 : 1;
+      }
+    });
+
+    logs.forEach(System.out::println);
+
+    return logs;
+  }
 }
