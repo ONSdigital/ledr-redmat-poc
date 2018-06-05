@@ -13,7 +13,7 @@ In order to run these applications you need to perform the following steps:
 
         git clone https://github.com/oracle/docker-images.git
 
-4. Download the Oracle Database 12c Release 1 Linux files 1 & 2 from
+4. Download the Oracle Database 12c Release 1 Standard Edition Linux files 1 & 2 from
 
         http://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html
 
