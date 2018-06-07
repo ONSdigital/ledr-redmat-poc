@@ -17,3 +17,5 @@ source redmat/bin/activate
 pip install flask
 
 pip install gunicorn
+
+pip install requests
